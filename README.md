@@ -1,5 +1,37 @@
 Docker container: CentOS 7 + Java 8 + Tomcat 8
 
+## Install Docker
+
+```sh
+## Remove all Packages from Yum Repo
+sudo yum -y remove docker \
+		docker-common \
+		container-selinux \
+		docker-selinux \
+		docker-engine
+## Setup Yum repo for latest Docker-CE Contiainer Engine
+
+sudo yum -y install yum-utils
+
+sudo yum-config-manager \
+	--add-repo \
+	https://download.docker.com/linux/centos/docker-ce.repo
+
+sudo yum makecache fast && sudo yum -y update
+
+sudo yum list docker-ce.x86_64 --showduplicates |sort -r
+
+sudo yum install docker-ce-<VERSION>
+
+sudo systemctl enable docker && sudo systemctl start docker
+
+sudo usermod -aG docker $(whoami)
+
+Logout and log back in 
+
+sudo docker run hello-world
+```
+
 ## Build the image
 
 ```sh
