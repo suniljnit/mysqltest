@@ -29,7 +29,9 @@ sudo usermod -aG docker $(whoami)
 
 Logout and log back in 
 
-sudo docker run hello-world
+## Confirm the Docker Version and Run a Test Container that Prints the Message and exits.
+
+docker -v && docker run hello-world 
 ```
 
 ## Build the image
