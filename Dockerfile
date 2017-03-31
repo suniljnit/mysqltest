@@ -63,13 +63,7 @@ RUN wget https://dev.mysql.com/get/mysql57-community-release-el7-9.noarch.rpm
 RUN rpm -ivh mysql57-community-release-el7-9.noarch.rpm
 RUN rpm --checksig mysql57-community-release-el7-9.noarch.rpm
 
-RUN yum -y update \
- && DEBIAN_FRONTEND=noninteractive yum install -y mysql-server \
- && rm -rf ${MYSQL_DATA_DIR} \
- && rm -rf /var/lib/apt/lists/*
-
-COPY entrypoint.sh /sbin/entrypoint.sh
-RUN chmod 755 /sbin/entrypoint.sh
+RUN yum install -y mysql-server
 
 EXPOSE 3306
 
