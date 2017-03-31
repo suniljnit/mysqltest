@@ -7,17 +7,16 @@ yum -y erase mysql mysql-server
 rm -rf /var/lib/mysql/ /etc/my.cnf
 wget https://dev.mysql.com/get/mysql57-community-release-el7-9.noarch.rpm
 rpm -ivh mysql57-community-release-el7-9.noarch.rpm
+yum install mysql-server
+systemctl start mysqld
+sudo systemctl status mysqld
+grep 'temporary password' /var/log/mysqld.log
 sleep 10
 }
 
 __start_mysql() {
 echo "Running the start_mysql function."
 mysqladmin -u root password mysqlPassword
-mysql -uroot -pmysqlPassword -e "CREATE DATABASE testdb"
-mysql -uroot -pmysqlPassword -e "GRANT ALL PRIVILEGES ON testdb.* TO 'testdb'@'localhost' IDENTIFIED BY 'mysqlPassword'; FLUSH PRIVILEGES;"
-mysql -uroot -pmysqlPassword -e "GRANT ALL PRIVILEGES ON *.* TO 'testdb'@'%' IDENTIFIED BY 'mysqlPassword' WITH GRANT OPTION; FLUSH PRIVILEGES;"
-mysql -uroot -pmysqlPassword -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'mysqlPassword' WITH GRANT OPTION; FLUSH PRIVILEGES;"
-mysql -uroot -pmysqlPassword -e "select user, host FROM mysql.user;"
 killall mysqld
 sleep 10
 }
