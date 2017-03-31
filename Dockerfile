@@ -54,11 +54,6 @@ USER tomcat
 CMD ["tomcat.sh"]
 
 # Install MySql
-ENV MYSQL_USER=mysql \
-    MYSQL_DATA_DIR=/var/lib/mysql \
-    MYSQL_RUN_DIR=/run/mysqld \
-    MYSQL_LOG_DIR=/var/log/mysql
-
 RUN wget https://dev.mysql.com/get/mysql57-community-release-el7-9.noarch.rpm
 RUN rpm -ivh mysql57-community-release-el7-9.noarch.rpm
 RUN rpm --checksig mysql57-community-release-el7-9.noarch.rpm
