@@ -2,7 +2,7 @@
 
 __run_supervisor() {
 echo "Running the run_supervisor function."
-supervisord -n
+supervisor -n
 }
 
 # Call all functions
