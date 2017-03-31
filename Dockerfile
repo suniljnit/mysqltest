@@ -56,7 +56,7 @@ CMD ["tomcat.sh"]
 # Install MySQL.
 
 RUN wget https://dev.mysql.com/get/mysql57-community-release-el7-9.noarch.rpm
-RUN rpm -ivh mysql57-community-release-el7-9.noarch.rpm -y 
+RUN rpm -ivh mysql57-community-release-el7-9.noarch.rpm 
 #PUBLIC KEY CHECK SIGN
 #RUN rpm --checksig mysql57-community-release-el7-9.noarch.rpm
 
