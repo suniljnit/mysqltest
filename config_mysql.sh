@@ -9,17 +9,16 @@ wget https://dev.mysql.com/get/mysql57-community-release-el7-9.noarch.rpm
 rpm -ivh mysql57-community-release-el7-9.noarch.rpm
 yum install mysql-server
 systemctl start mysqld
-sudo systemctl status mysqld
-grep 'temporary password' /var/log/mysqld.log
+#grep 'temporary password' /var/log/mysqld.log
 sleep 10
 }
 
-__start_mysql() {
-echo "Running the start_mysql function."
-mysqladmin -u root password mysqlPassword
-killall mysqld
-sleep 10
-}
+#__start_mysql() {
+#echo "Running the start_mysql function."
+#mysqladmin -u root password mysqlPassword
+#killall mysqld
+#sleep 10
+#}
 
 # Call all functions
 __mysql_config
