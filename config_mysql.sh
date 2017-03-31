@@ -5,7 +5,8 @@ __mysql_config() {
 echo "Running the mysql_config function."
 yum -y erase mysql mysql-server
 rm -rf /var/lib/mysql/ /etc/my.cnf
-yum -y install mysql-server
+wget https://dev.mysql.com/get/mysql57-community-release-el7-9.noarch.rpm
+rpm -ivh mysql57-community-release-el7-9.noarch.rpm
 sleep 10
 }
 
