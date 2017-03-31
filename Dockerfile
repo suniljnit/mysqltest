@@ -70,7 +70,7 @@ RUN apt-get update \
 COPY entrypoint.sh /sbin/entrypoint.sh
 RUN chmod 755 /sbin/entrypoint.sh
 
-EXPOSE 3306/tcp
+EXPOSE 3306
 VOLUME ["${MYSQL_DATA_DIR}", "${MYSQL_RUN_DIR}"]
 ENTRYPOINT ["/sbin/entrypoint.sh"]
 CMD ["/usr/bin/mysqld_safe"]
