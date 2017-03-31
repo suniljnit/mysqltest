@@ -53,27 +53,14 @@ EXPOSE 8009
 USER tomcat
 CMD ["tomcat.sh"]
 
-# Install MySql
-# Pull base image.
-FROM dockerfile/centos
-
 # Install MySQL.
-RUN \
-  yum -y update && \
-  DEBIAN_FRONTEND=noninteractive yum install -y mysql-server && \
-  rm -rf /var/lib/apt/lists/* && \
-  sed -i 's/^\(bind-address\s.*\)/# \1/' /etc/mysql/my.cnf && \
-  sed -i 's/^\(log_error\s.*\)/# \1/' /etc/mysql/my.cnf && \
-  echo "mysqld_safe &" > /tmp/config && \
-  echo "mysqladmin --silent --wait=30 ping || exit 1" >> /tmp/config && \
-  echo "mysql -e 'GRANT ALL PRIVILEGES ON *.* TO \"root\"@\"%\" WITH GRANT OPTION;'" >> /tmp/config && \
-  bash /tmp/config && \
-  rm -f /tmp/config
-  
-VOLUME ["/etc/mysql", "/var/lib/mysql"]
 
-WORKDIR /data
+RUN wget https://dev.mysql.com/get/mysql57-community-release-el7-9.noarch.rpm
+RUN rpm -ivh mysql57-community-release-el7-9.noarch.rpm
+#PUBLIC KEY CHECK SIGN
+RUN rpm --checksig mysql57-community-release-el7-9.noarch.rpm
 
-CMD ["mysqld_safe"]
+RUN yum install -y mysql-server
+#PASSWORD
 
 EXPOSE 3306
