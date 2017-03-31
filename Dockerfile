@@ -23,10 +23,10 @@ RUN wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=acc
  mv jdk* ${JAVA_HOME}
 
 #MySql Install
-RUN yum -y update; yum clean all
-RUN yum -y install epel-release; yum clean all
-RUN yum -y install mysql-server mysql pwgen supervisor bash-completion psmisc net-tools; yum clean all
-RUN mkdir /var/log/mysqld.log
+#RUN yum -y update; yum clean all
+#RUN yum -y install epel-release; yum clean all
+#RUN yum -y install mysql-server mysql pwgen supervisor bash-completion psmisc net-tools; yum clean all
+#RUN mkdir /var/log/mysqld.log
 
 ADD ./start.sh /start.sh
 ADD ./config_mysql.sh /config_mysql.sh
