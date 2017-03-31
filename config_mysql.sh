@@ -7,7 +7,7 @@ yum -y erase mysql mysql-server
 rm -rf /var/lib/mysql/ /etc/my.cnf
 wget https://dev.mysql.com/get/mysql57-community-release-el7-9.noarch.rpm
 rpm -ivh mysql57-community-release-el7-9.noarch.rpm
-yum install mysql-server
+yum install mysql-server -y
 systemctl start mysqld
 #grep 'temporary password' /var/log/mysqld.log
 sleep 10
@@ -21,5 +21,5 @@ sleep 10
 #}
 
 # Call all functions
-__mysql_config
-__start_mysql
+#__mysql_config
+#__start_mysql
