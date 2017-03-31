@@ -6,9 +6,6 @@ echo "Running the mysql_config function."
 yum -y erase mysql mysql-server
 rm -rf /var/lib/mysql/ /etc/my.cnf
 yum -y install mysql-server
-mysql_install_db --user=mysql
-chown -R mysql:mysql /var/lib/mysql
-/usr/bin/mysqld_safe --user=mysql & 
 sleep 10
 }
 
