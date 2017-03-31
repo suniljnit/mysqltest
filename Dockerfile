@@ -33,8 +33,9 @@ ADD ./supervisord.conf /etc/supervisord.conf
 
 # RUN echo %sudo	ALL=NOPASSWD: ALL >> /etc/sudoers
 
-CMD ["USER", "root", "/start.sh"]
-CMD ["USER", "root", "/config_mysql.sh"]
+RUN chmod 755 /start.sh
+RUN chmod 755 /config_mysql.sh
+RUN /config_mysql.sh
 
 EXPOSE 3306
 
